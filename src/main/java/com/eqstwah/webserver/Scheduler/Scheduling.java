@@ -6,6 +6,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.eqstwah.webserver.Entity.LicenseEntity;
+import com.eqstwah.webserver.Repository.AccessLogRepo;
 import com.eqstwah.webserver.Repository.LicenseRepo;
 import com.eqstwah.webserver.Utility.AES256;
 
@@ -16,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 public class Scheduling {
 
     private final LicenseRepo licenseRepo;
+    private final AccessLogRepo accessLogRepo;
 
     @Scheduled(cron = "0 0,5,10,15,20,25,30,33,40,45,50,55 * * * *")
     public void cronJobSch() {
@@ -54,6 +56,11 @@ public class Scheduling {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Scheduled(cron = "0 0,15,30,45 * * * *")
+    public void deleteAceesLog(){
+        accessLogRepo.deleteAll();
     }
 
     @Scheduled(cron = "0 0 0 1 1,4,7,10 *")
