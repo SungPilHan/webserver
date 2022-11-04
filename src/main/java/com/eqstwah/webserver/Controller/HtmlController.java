@@ -36,7 +36,7 @@ public class HtmlController {
             model.addAttribute("license", licenseEntity.getLicense());
         }
         else{
-            Scheduling sch = new Scheduling(licenseRepo);
+            Scheduling sch = new Scheduling(licenseRepo, accessLogRepo);
             sch.cronJobSch();
             if(licenseRepo.findById(1L).isPresent()){
                 LicenseEntity licenseEntity = licenseRepo.findById(1L).get();

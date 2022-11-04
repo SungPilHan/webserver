@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eqstwah.webserver.Entity.LicenseEntity;
+import com.eqstwah.webserver.Repository.AccessLogRepo;
 import com.eqstwah.webserver.Repository.LicenseRepo;
 import com.eqstwah.webserver.Scheduler.Scheduling;
 import com.eqstwah.webserver.Utility.AES256;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TestController {
     private final LicenseRepo licenseRepo;
+    private final AccessLogRepo accessLogRepo;
 
     @GetMapping("/hello")
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
@@ -31,7 +33,7 @@ public class TestController {
             challenge = licenseEntity.getChallenge();
         }
         else{
-            Scheduling sch = new Scheduling(licenseRepo);
+            Scheduling sch = new Scheduling(licenseRepo,accessLogRepo);
             sch.cronJobSch();
             if(licenseRepo.findById(1L).isPresent()){
                 LicenseEntity licenseEntity = licenseRepo.findById(1L).get();
@@ -51,7 +53,7 @@ public class TestController {
     public String checklicense(@RequestParam(value = "data", defaultValue = "none") String data) {
         String license_code = "testest";
         LicenseEntity licenseEntity = null;
-        Scheduling sch = new Scheduling(licenseRepo);
+        Scheduling sch = new Scheduling(licenseRepo, accessLogRepo);
         data = data.trim().replace(" ", "+");
         if(licenseRepo.findById(1L).isPresent()){
             licenseEntity = licenseRepo.findById(1L).get();
