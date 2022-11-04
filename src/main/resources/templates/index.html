@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width" initial-scale="1.0">
+    <link rel="stylesheet" href="./css/license_page.css">
+    <title>WAH</title>
+</head>
+<body>
+    <div class="main">
+        <div class="title">
+            <h1>Windows Application Hacking</h1>
+        </div>
+        <fieldset class="content">
+            <legend><h2>License</h2></legend>
+            <div class="license">
+                <span th:text="${license}"></span>
+            </div>
+        </fieldset>
+        <fieldset class="practice">
+            <legend><h2>Practice File Download</h2></legend>
+            <ul>
+                <li><a href="./download/EQSTNOTE_DA.zip">동적 분석 실습 문제</a></li>
+                <li><a href="./download/EQSTNOTE_SA.zip">정적 분석 실습 문제</a></li>
+                <li><a href="./download/EQSTNOTE_HOOK.zip">Hooking 실습 문제</a></li>
+                <li><a href="./download/EQSTNOTE_PACK_ONE.zip">패킹/언패킹 실습 문제(1번)</a></li>
+                <li><a href="./download/EQSTNOTE_PACK_TWO2FOUR.zip">패킹/언패킹 실습 문제(2~4번)</a></li>
+                <li><a href="./download/EQSTNOTE_ANTIDEBUG.zip">안티 디버깅 실습 문제</a></li>
+            </ul>
+        </fieldset>
+    </div>
+</body>
+</html>

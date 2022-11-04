@@ -1,0 +1,61 @@
+body{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(30px, auto));
+    grid-template-rows: repeat(4, minmax(100px, auto));
+    background-image: url("../img/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main{
+    grid-column: 2/3;
+    grid-row: 2/5;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, minmax(30px, auto));
+    color: whitesmoke;
+}
+
+.title{
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.title h1{
+    margin: 20px 7px;
+}
+
+.content{
+    grid-column: 2/3;
+    grid-row: 2/4;
+    background-color: rgb(28,28,28);
+}
+
+.content h2{
+    margin: 10px 5px;
+}
+
+.license{
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+.license span{
+    word-break: break-all;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.practice{
+    grid-column: 2/3;
+    grid-row: 4/5;
+    background-color: rgb(28,28,28);
+}
+
+.practice ul{
+    margin-top: 0;
+}
+
+.practice a{
+    color:whitesmoke;
+}
